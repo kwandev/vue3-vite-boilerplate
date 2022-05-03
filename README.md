@@ -25,3 +25,4 @@
 - lodash
 - uuid
 - dayjs
+- vueuse

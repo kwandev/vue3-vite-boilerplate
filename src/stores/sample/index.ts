@@ -18,5 +18,6 @@ export const useSampleStore = defineStore('sample', {
     randomizeCounter() {
       this.counter = Math.round(100 * Math.random());
     },
+    getPosts() {},
   },
 });

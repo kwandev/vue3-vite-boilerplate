@@ -1,25 +1,10 @@
-<script setup lang="ts">
-import { ref } from 'vue';
-import { useSampleStore } from '@/stores/sample';
-
-const sampleStore = useSampleStore();
-
-const onClick = () => {
-  sampleStore.increment();
-};
-
-alert(1234);
-
-const val = ref(0);
-</script>
-
 <template>
   <h1>{{ sampleStore.counter }}</h1>
   <h1>{{ sampleStore.doubleCount }}</h1>
 
   <button type="button" @click="onClick">increment</button>
 
-  <input id="bb" v-model="val" class="aa" type="number" alt="" :attr="'1231'" @click="onClick" />
+  <input id="bb" v-model="val" class="aa" type="number" alt="" :attr="'1231'" />
 
   <p>
     Recommended IDE setup:
@@ -41,3 +26,21 @@ const val = ref(0);
     <code>components/HelloWorld.vue</code> to test hot module replacement.
   </p>
 </template>
+
+<script setup lang="ts">
+import { onMounted, ref } from 'vue';
+import { useSampleStore } from '@/stores/sample';
+import { getPosts } from '@/api/sample';
+
+const sampleStore = useSampleStore();
+
+const onClick = () => {
+  sampleStore.increment();
+};
+
+const val = ref(0);
+
+onMounted(async () => {
+  await getPosts();
+});
+</script>
