@@ -32,8 +32,7 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue';
 import { useSampleStore } from '@/stores/sample';
-import { getPosts } from '@/api/sample';
-// import Sample from '@/api/sample';
+import Sample from '@/api/sample';
 import { PostModel } from '@/api/sample/sample.models';
 
 const sampleStore = useSampleStore();
@@ -44,12 +43,11 @@ const onClick = () => {
 
 const sampleArray = ref<PostModel[]>([]);
 
-// const sample = new Sample();
+const sample = new Sample();
 
 onMounted(async () => {
   try {
-    sampleArray.value = await getPosts({ userId: 1 });
-    // sampleArray.value = await sample.getPosts({ userId: 1 });
+    sampleArray.value = await sample.getPosts({ userId: 1 });
   } catch (e) {
     console.error(e);
   }
