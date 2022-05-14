@@ -22,11 +22,11 @@ export default class AxiosAdapter implements Network {
   set authorization(token: string) {
     this._authorization = token;
 
-    // if (!!this._authorization) {
-    //   this._instance.defaults.headers.common['Authorization'] = `bearer ${this._authorization}`;
-    // } else {
-    //   delete this._instance.defaults.headers.common['Authorization'];
-    // }
+    if (!!this._authorization) {
+      this._instance.defaults.headers.common['Authorization'] = `bearer ${this._authorization}`;
+    } else {
+      delete this._instance.defaults.headers.common['Authorization'];
+    }
   }
 
   async get(url: string, params: {}) {

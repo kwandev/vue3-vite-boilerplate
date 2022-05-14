@@ -1,15 +1,18 @@
 import { defineStore } from 'pinia';
+import { State } from './sample.types';
+import { PostModel } from '@/api/sample/sample.models';
 
 export const useSampleStore = defineStore('sample', {
   state: () => {
     return {
-      counter: 0 as number,
-      name: 'Eduardo' as string,
-      isAdmin: true as boolean,
-    };
+      counter: 0,
+      name: '홍길동',
+      posts: [],
+    } as State;
   },
   getters: {
     doubleCount: (state): number => state.counter * 2,
+    getPosts: (state): PostModel[] => state.posts,
   },
   actions: {
     increment() {
@@ -18,6 +21,11 @@ export const useSampleStore = defineStore('sample', {
     randomizeCounter() {
       this.counter = Math.round(100 * Math.random());
     },
-    getPosts() {},
+    reset() {
+      this.counter = 0;
+    },
+    setPosts(posts: PostModel[]) {
+      this.posts = posts;
+    },
   },
 });

@@ -1,8 +1,10 @@
 <template>
   <div class="page index">
-    <h1>{{ sampleStore.counter }}</h1>
-    <h1>{{ sampleStore.doubleCount }}</h1>
+    <h2>counter : {{ sampleStore.counter }}</h2>
+    <h2>x2 : {{ sampleStore.doubleCount }}</h2>
     <button type="button" @click="onClick">increment</button>
+    <button type="button" @click="sampleStore.randomizeCounter()">random number</button>
+    <button type="button" @click="sampleStore.reset()">reset</button>
 
     <hr />
 
@@ -16,7 +18,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="item in sampleArray" :key="item.id">
+        <tr v-for="item in posts" :key="item.id">
           <td>{{ item.id }}</td>
           <td>{{ item.title }}</td>
           <td>{{ item.body }}</td>
@@ -30,26 +32,39 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, ref } from 'vue';
-import { useSampleStore } from '@/stores/sample';
-import Sample from '@/api/sample';
+import { computed, onMounted } from 'vue';
+import { useSampleStore } from '@/store/sample';
+import SampleAPI from '@/api/sample';
 import { PostModel } from '@/api/sample/sample.models';
+import { useAuthStore } from '@/store/auth';
 
 const sampleStore = useSampleStore();
 
-const onClick = () => {
+const authStore = useAuthStore();
+authStore.setAccessToken('ahdskflahsjkfhl');
+
+const posts = computed<PostModel[]>(() => sampleStore.getPosts);
+
+const onClick = (): void => {
   sampleStore.increment();
 };
 
-const sampleArray = ref<PostModel[]>([]);
+const loadPosts = async (): Promise<any> => {
+  const sampleApi = new SampleAPI();
 
-const sample = new Sample();
-
-onMounted(async () => {
   try {
-    sampleArray.value = await sample.getPosts({ userId: 1 });
+    const data = await sampleApi.getPosts({ userId: 1 });
+    sampleStore.setPosts(data);
+
+    return data;
   } catch (e) {
     console.error(e);
+  }
+};
+
+onMounted(() => {
+  if (posts.value.length === 0) {
+    loadPosts();
   }
 });
 </script>

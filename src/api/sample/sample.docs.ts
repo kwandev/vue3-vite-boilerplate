@@ -1,6 +1,6 @@
-enum SampleAPI {
+enum SampleDoc {
   posts = '/posts',
   comments = `/comments`,
 }
 
-export default SampleAPI;
+export default SampleDoc;
