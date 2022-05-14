@@ -1,6 +1,6 @@
 import { useAuthStore } from '@/store/auth';
 
-export default class AuthToken {
+export default class Auth {
   _token: string = '';
 
   constructor() {

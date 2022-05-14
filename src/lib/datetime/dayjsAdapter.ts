@@ -1,11 +1,11 @@
-import dayjs, { Dayjs } from 'dayjs';
+import dayjs from 'dayjs';
 import timezone from 'dayjs/plugin/timezone';
 import utc from 'dayjs/plugin/utc';
 
 dayjs.extend(timezone);
 dayjs.extend(utc);
 
-import type DateTime from './dateTime';
+import type DateTime from './DateTime';
 
 export default class DayjsAdapter implements DateTime {
   today(): string {

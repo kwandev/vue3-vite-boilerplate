@@ -35,7 +35,7 @@
 import { computed, onMounted } from 'vue';
 import { useSampleStore } from '@/store/sample';
 import SampleAPI from '@/api/sample';
-import { PostModel } from '@/api/sample/sample.models';
+import { PostResponseModel } from '@/api/sample/sample.models';
 import { useAuthStore } from '@/store/auth';
 
 const sampleStore = useSampleStore();
@@ -43,7 +43,7 @@ const sampleStore = useSampleStore();
 const authStore = useAuthStore();
 authStore.setAccessToken('ahdskflahsjkfhl');
 
-const posts = computed<PostModel[]>(() => sampleStore.getPosts);
+const posts = computed<PostResponseModel[]>(() => sampleStore.getPosts);
 
 const onClick = (): void => {
   sampleStore.increment();
