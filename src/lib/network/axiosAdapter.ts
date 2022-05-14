@@ -1,6 +1,6 @@
 import axios, { Axios, AxiosResponse, AxiosRequestConfig, AxiosRequestHeaders } from 'axios';
 
-import type Network from './network';
+import type Network from './Network';
 
 export default class AxiosAdapter implements Network {
   private readonly _instance: Axios;

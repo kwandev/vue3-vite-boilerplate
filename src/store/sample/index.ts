@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia';
 import { State } from './sample.types';
-import { PostModel } from '@/api/sample/sample.models';
+import { PostResponseModel } from '@/api/sample/sample.models';
 
 export const useSampleStore = defineStore('sample', {
   state: () => {
@@ -12,7 +12,7 @@ export const useSampleStore = defineStore('sample', {
   },
   getters: {
     doubleCount: (state): number => state.counter * 2,
-    getPosts: (state): PostModel[] => state.posts,
+    getPosts: (state): PostResponseModel[] => state.posts,
   },
   actions: {
     increment() {
@@ -24,7 +24,7 @@ export const useSampleStore = defineStore('sample', {
     reset() {
       this.counter = 0;
     },
-    setPosts(posts: PostModel[]) {
+    setPosts(posts: PostResponseModel[]) {
       this.posts = posts;
     },
   },
