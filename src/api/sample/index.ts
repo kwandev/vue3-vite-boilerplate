@@ -1,11 +1,20 @@
-import axios, { Axios, AxiosResponse, AxiosRequestConfig } from 'axios';
-import { PostModel } from './sample.model';
-import { SampleAPI } from './sample.type';
+import { createNetwork } from '@/lib/network';
+import { PostModel } from './sample.models';
+import SampleDocs from './sample.docs';
+import AxiosAdapter from '@/lib/network/axiosAdapter';
+import config from '@/config';
+import AuthToken from '@/api/authToken';
 
-const BASE_URL = 'https://jsonplaceholder.typicode.com';
+const BASE_URL = config.api.default;
+const network: AxiosAdapter = createNetwork(BASE_URL);
 
-const network: Axios = axios.create({ baseURL: BASE_URL });
+export default class SampleAPI extends AuthToken {
+  constructor() {
+    super();
+    network.authorization = this._token;
+  }
 
-export const getPosts = async (params?: PostModel) => {
-  return network.get(SampleAPI.posts, {});
-};
+  async getPosts(params: PostModel) {
+    return network.get(SampleDocs.posts, { ...params });
+  }
+}
