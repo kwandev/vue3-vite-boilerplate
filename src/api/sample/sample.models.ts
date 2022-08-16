@@ -1,11 +1,11 @@
-export interface PostRequestModel {
-  id?: string;
-  userId?: number | string;
+export interface PostReqModel {
+  id?: number;
+  userId?: number;
 }
 
-export interface PostResponseModel {
-  id?: string;
-  title?: string;
-  body?: string;
-  userId?: number | string;
+export interface PostResModel {
+  id: number;
+  userId: number;
+  title: string;
+  body: string;
 }

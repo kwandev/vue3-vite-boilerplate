@@ -1,0 +1,26 @@
+@charset 'utf-8';
+
+.page.sample {
+  section {
+    padding: px(20);
+
+    h1 {
+      font-size: px(40);
+      font-weight: 700;
+    }
+
+    h2 {
+      font-size: px(20);
+    }
+
+    button {
+      padding: px(10);
+      background-color: #bdd5ff;
+      border-radius: px(10);
+
+      & + button {
+        margin-left: px(8);
+      }
+    }
+  }
+}

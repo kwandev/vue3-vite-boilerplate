@@ -1,0 +1,27 @@
+@charset 'utf-8';
+
+/* General Variable */
+:root {
+  --sm-size: 640px;
+  --md-size: 768px;
+  --lg-size: 1024px;
+  --xl-size: 1280px;
+  --2xl-size: 1536px;
+
+  --font-size: 16px;
+}
+
+$sm-size: 640px;
+$md-size: 768px;
+$lg-size: 1024px;
+$xl-size: 1280px;
+
+$z-header: 50;
+
+/**
+  px to rem
+  px 사이즈 입력시 16px 기준 rem으로 변환
+*/
+@function px($value: 16) {
+  @return calc($value / 10) * 0.625rem;
+}

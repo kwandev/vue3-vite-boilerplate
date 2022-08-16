@@ -1,0 +1,10 @@
+@charset 'utf-8';
+
+/* Sass mixins */
+@import './_mixins';
+
+/* Common */
+@import './_reset';
+
+/* Pages */
+@import '../pages/_index';
