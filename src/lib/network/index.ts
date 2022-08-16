@@ -1,8 +1,7 @@
-// import type Network from "./network";
-import AxiosAdapter from './axiosAdapter';
+import Adapter from './axiosAdapter';
 
-export function createNetwork(url?: string): AxiosAdapter {
-  const builder: AxiosAdapter = new AxiosAdapter();
+export function createNetwork(url?: string): Adapter {
+  const builder: Adapter = new Adapter();
 
   if (!!url) {
     builder.baseUrl = url;
@@ -10,3 +9,5 @@ export function createNetwork(url?: string): AxiosAdapter {
 
   return builder;
 }
+
+export type { Adapter };
