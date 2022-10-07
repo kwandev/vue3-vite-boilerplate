@@ -4,7 +4,7 @@ import SampleAPI from '@/api/sample';
 import { ref } from 'vue';
 import _ from 'lodash';
 
-const mappingPosts = (posts: PostResModel[]): PostStoreModel[] => {
+export const mappingPosts = (posts: PostResModel[]): PostStoreModel[] => {
   return _.map(posts, (post) => {
     return {
       userId: post.userId,
