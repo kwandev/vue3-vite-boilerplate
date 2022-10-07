@@ -15,7 +15,7 @@
       <button @click="onClickUserResetFilter">reset filter</button>
 
       <template v-if="isLoading">
-        <p>Loading...</p>
+        <Loading />
       </template>
       <template v-else>
         <table>
@@ -47,6 +47,7 @@ import { useSampleStore } from '@/store/sample';
 import { PostReqModel } from '@/api/sample/sample.models';
 import { usePosts } from '@/domain/sample';
 import { useRouter, useRoute, LocationQuery } from 'vue-router';
+import Loading from '@/components/atoms/Loading.vue';
 
 const router = useRouter();
 const route = useRoute();
